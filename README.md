@@ -31,7 +31,7 @@ Configure um servidor NFS para compartilhar diretórios e arquivos entre máquin
 
 A topologia desse projeto consistiu em um computador (HOST)  fornecendo internet e hardware para as VMS, assim utilizando o Vagrant e o Virtualbox para criar as máquinas onde serão criadas as 3 VMS previstas onde  elas devem se comunicar entre si.
 A topologia pode ser  visualizada na imagem abaixo: 
-![Image da topologia usado] ()
+![Image da topologia usado] (https://github.com/Ericfg05/TrabalhoFinalDeRedes/blob/main/Topologia.png)
 
 
 
