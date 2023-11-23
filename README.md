@@ -6,7 +6,7 @@ Para realizar esse tipo de configuração de redes, são necessários possuir al
 
 Para iniciar a com a utilização do Vagrant, você deve primeiramente baixar a ferramenta, para isso, abra o terminal (Ctrl+Alt+t), e digite o seguinte comando: sudo apt- get update, assim esse comando fará as atualizações de dependências em seu sistema, após atualizar, execute o comando: sudo apt install vagrant , assim baixará a ferramenta vagrant. O vagrant utiliza-se o VirtualBox, para criação das máquinas virtuais, para download do VirtualBox, utilize o seguinte comando em seu terminal: sudo apt install virtualbox-qt, assim a ferramenta será instalada em seu computador. O docker que iremos utilizar para criação dos containers será instalado dentro da máquina virtual. Porém caso deseje instalar em sua máquina host utilize o comando sudo apt install -y docker-io, esse comando será também utilizado dentro das máquinas virtuais para a instalação do docker. Para instalar o visual code,  entre no site oficial e baixe o pacote .deb, logo realizar o Download, entre na pasta Download  e abra o terminal, e digite o comando sudo dpkg -i nome_do_arquivo assim, instalando-o em sua máquina
 
-Inicialização do Vagrant
+**Inicialização do Vagrant**
 
 Para iniciar o Vagrant , você deve utilizar uma imagem de um sistema operacional, assim você poderá criar uma máquina virtual de qualquer sistema. As imagens são disponibilizadas no site oficial: https://app.vagrantup.com/boxes/search , porém, para a criação das máquinas, será utilizado o ubuntu server. Primeiramente, abre o terminal (Ctrl+Alt+t), e em seguida crie uma pasta com o nome que você deseja, use o comando: mkdir nome_da_pasta , em seguida entre na pasta com o comando cd nome_da_pasta, em sequência, use o comando: vagrant init gusztavvargadr/ubuntu-server, com isso será criado um arquivo com o nome Vagrantfile, assim basta dar o comando code . para abrir e editar o arquivo no visual studio.
 
@@ -31,8 +31,7 @@ Configure um servidor NFS para compartilhar diretórios e arquivos entre máquin
 
 A topologia desse projeto consistiu em um computador (HOST)  fornecendo internet e hardware para as VMS, assim utilizando o Vagrant e o Virtualbox para criar as máquinas onde serão criadas as 3 VMS previstas onde  elas devem se comunicar entre si.
 A topologia pode ser  visualizada na imagem abaixo: 
-![Image da topologia usado] (/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes
-/Topologia.png)
+![Image da topologia usado] ()
 
 
 
