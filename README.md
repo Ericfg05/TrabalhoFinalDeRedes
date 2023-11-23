@@ -81,6 +81,7 @@ A imagens podem ser extraídas pelo site dock hub: https://hub.docker.com/
 Para realizar o teste do funcionamento, pode se inicializar o terminal entrar na pasta em que o Vagrantfile foi criado, e em seguida abra o terminal nesta pasta e digite o comando vagrant ssh nome da vm, exemplo: vagrant ssh vm2, assim você entrará dentro da vm, assim você pode dar um sudo docker ps, dessa maneira, será listados todos os conteiner criados.
 
 **Resultados**
+
 Pode se analisar que os dockers estão sendo criado de acordo com o que foi inseridos no docker run, ou sejam funcionamento de criação dos conteiners está acontecendo
 
 
