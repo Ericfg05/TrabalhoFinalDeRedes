@@ -78,11 +78,11 @@ A imagens podem ser extraídas pelo site dock hub: https://hub.docker.com/
 
 **Teste**
 
-Para realizar o teste do funcionamento, pode se inicializar o terminal entrar na pasta em que o Vagrantfile foi criado, e em seguida abra o terminal nesta pasta e digite o comando vagrant ssh nome da vm, exemplo: vagrant ssh vm2, assim você entrará dentro da vm, assim você pode dar um sudo docker ps, dessa maneira, será listados todos os conteiner criados.
+Para realizar o teste do funcionamento, pode se inicializar o terminal entrar na pasta em que o Vagrantfile foi criado, e em seguida nesta pasta e digite o comando vagrant ssh nome da vm, exemplo: vagrant ssh vm2, assim você entrará dentro da vm, assim você pode dar um sudo docker ps, dessa maneira, será listados todos os conteiner criados. 
+Para testar o DHCP  use o dhcp.config para poder visualizar a configuração do DHCP.
+Para acessar os containers use o comando sudo docker exec -it nome do container /bin/bash, assim pode usar o comando apache2 -v para verificar se o apache foi instalado, caso sim ele retornara sua versão.
+Para testar a funcionalidade do FTP, entre dentro do container, e use o comando status, assim ele retornará o status atual da conexão.
 
-**Resultados**
-
-Pode se analisar que os dockers estão sendo criado de acordo com o que foi inseridos no docker run, ou sejam funcionamento de criação dos conteiners está acontecendo
 
 
 
