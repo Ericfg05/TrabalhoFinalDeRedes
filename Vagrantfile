@@ -37,7 +37,7 @@ SHELL
 
   config.vm.define "vm3" do |vm3|
 
-  vm3.vm.network "forwarded_port", guest: 67, host: 80 # 
+  vm3.vm.network "forwarded_port", guest: 67, host:5050 # 
  
   vm3.vm.synced_folder "/var/www/html", "/var/www/html" 
  
