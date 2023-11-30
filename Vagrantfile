@@ -6,26 +6,27 @@ Vagrant.configure("2") do |config|
   
     vm1.vm.network "forwarded_port", guest: 67, host: 67 # 2  - Configuração de rede
     vm1.vm.network "private_network", ip: "192.168.56.10"
-  
- 
+    vm1.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)"
+
   vm1.vm.provision "shell", inline: <<-SHELL
     #ip route add default via 192.168.56.12
+    sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
     export DEBIAN_FRONTEND=noninteractive
     apt update
     apt install -y docker.io
     docker run --privileged -d --name dhcp --net host -e "IP=172.21.0.100" homeall/dhcphelper:latest
-    
+
 SHELL
   end
 
   config.vm.define "vm2" do |vm2|
 
-    vm2.vm.network "forwarded_port", guest: 52, host: 52 # 2  - Configuração de rede
+    vm2.vm.network "forwarded_port", guest: 67, host: 3030 # 2  - Configuração de rede
     vm2.vm.network "private_network", ip: "192.168.56.11"
     vm2.vm.synced_folder "/var/www/html", "/var/www/html" #2 - Pasta Compartilhada
    
     vm2.vm.provision "shell", inline: <<-SHELL
-     
+    sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
       export DEBIAN_FRONTEND=noninteractive
       apt update
       apt install -y docker.io
@@ -36,13 +37,14 @@ SHELL
 
   config.vm.define "vm3" do |vm3|
 
-  vm3.vm.network "forwarded_port", guest: 90, host: 90 # 
+  vm3.vm.network "forwarded_port", guest: 67, host: 80 # 
  
   vm3.vm.synced_folder "/var/www/html", "/var/www/html" 
  
    vm3.vm.provision "shell", inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
     apt update
+    sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
     apt-get install -y apache2
    # sudo nano /etc/exports
     apt install -y docker.io
@@ -59,7 +61,7 @@ SHELL
 
     docker run                                            \
        -v /var/www/html:/home \
-       -v /var/www/html/exports.txt:/etc/exports:ro  \
+       -v /var/www/html/index.html:/etc/exports:ro  \
       --cap-add SYS_ADMIN                                 \
       -p 2049:2049                                        \
       erichough/nfs-server
