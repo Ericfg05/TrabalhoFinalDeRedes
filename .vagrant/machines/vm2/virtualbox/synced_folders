@@ -1,1 +1,1 @@
-{"virtualbox":{"/var/www/html":{"guestpath":"/var/www/html","hostpath":"/var/www/html","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes","disabled":false,"__vagrantfile":true}}}
