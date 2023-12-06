@@ -4,11 +4,11 @@ Para realizar esse tipo de configuração de redes, são necessários possuir al
 
 **Instalação**
 
-Para iniciar a com a utilização do Vagrant, você deve primeiramente baixar a ferramenta, para isso, abra o terminal (Ctrl+Alt+t), e digite o seguinte comando: sudo apt- get update, assim esse comando fará as atualizações de dependências em seu sistema, após atualizar, execute o comando: sudo apt install vagrant , assim baixará a ferramenta vagrant. O vagrant utiliza-se o VirtualBox, para criação das máquinas virtuais, para download do VirtualBox, utilize o seguinte comando em seu terminal: sudo apt install virtualbox-qt, assim a ferramenta será instalada em seu computador. O docker que iremos utilizar para criação dos containers será instalado dentro da máquina virtual. Porém caso deseje instalar em sua máquina host utilize o comando sudo apt install -y docker-io, esse comando será também utilizado dentro das máquinas virtuais para a instalação do docker. Para instalar o visual code,  entre no site oficial e baixe o pacote .deb, logo realizar o Download, entre na pasta Download  e abra o terminal, e digite o comando sudo dpkg -i nome_do_arquivo assim, instalando-o em sua máquina
+Para iniciar a com a utilização do Vagrant, você deve primeiramente baixar a ferramenta, para isso, abra o terminal (Ctrl+Alt+t), e digite o seguinte comando: sudo apt- get update, assim esse comando fará as atualizações de dependências em seu sistema, após atualizar, execute o comando: **sudo apt install vagrant** , assim baixará a ferramenta vagrant. O vagrant utiliza-se o VirtualBox, para criação das máquinas virtuais, para download do VirtualBox, utilize o seguinte comando em seu terminal: **sudo apt install virtualbox-qt**, assim a ferramenta será instalada em seu computador. O docker que iremos utilizar para criação dos containers será instalado dentro da máquina virtual. Porém, caso deseje instalar em sua máquina host utilize o comando **sudo apt install -y docker-io**, esse comando será também utilizado dentro das máquinas virtuais para a instalação do docker. Para instalar o visual code,  entre no site oficial e baixe o pacote .deb, logo que realizar o Download, entre na pasta Download e abra o terminal, e digite o comando: **sudo dpkg -i nome_do_arquivo**, assim, instalando-o em seu computador
 
 **Inicialização do Vagrant**
 
-Para iniciar o Vagrant , você deve utilizar uma imagem de um sistema operacional, assim você poderá criar uma máquina virtual de qualquer sistema. As imagens são disponibilizadas no site oficial: https://app.vagrantup.com/boxes/search , porém, para a criação das máquinas, será utilizado o ubuntu server. Primeiramente, abre o terminal (Ctrl+Alt+t), e em seguida crie uma pasta com o nome que você deseja, use o comando: mkdir nome_da_pasta , em seguida entre na pasta com o comando cd nome_da_pasta, em sequência, use o comando: vagrant init gusztavvargadr/ubuntu-server, com isso será criado um arquivo com o nome Vagrantfile, assim basta dar o comando code . para abrir e editar o arquivo no visual studio.
+Para iniciar o Vagrant , você deve utilizar uma imagem de um sistema operacional, assim você poderá criar uma máquina virtual de qualquer sistema. As imagens são disponibilizadas no site oficial: **https://app.vagrantup.com/boxes/search** , porém, para a criação das máquinas, será utilizado o ubuntu server **(gusztavvargadr/ubuntu-server)**. Primeiramente, abre o terminal (Ctrl+Alt+t), e em seguida crie uma pasta com o nome que você deseja, use o comando: **mkdir nome_da_pasta** para isso, em seguida entre na pasta com o comando **cd nome_da_pasta**, em sequência, use o comando: **vagrant init gusztavvargadr/ubuntu-server**, com isso será criado um arquivo com o nome Vagrantfile, assim basta dar o comando **code .** para abrir e editar o arquivo no visual studio.
 
 **Requisitos dos serviços** 
 
@@ -24,13 +24,13 @@ Para iniciar o Vagrant , você deve utilizar uma imagem de um sistema operaciona
 
 **Topologia utilizada**
 
-A topologia desse projeto consistiu em um computador (HOST)  fornecendo internet e hardware para as VMS, assim utilizando o Vagrant e o Virtualbox para criar as máquinas onde serão criadas as 5 VMS previstas onde  elas devem se comunicar entre si.
+A topologia desse projeto consistiu em um computador (HOST)  fornecendo internet e hardware para as VMS, assim utilizando o Vagrant e o Virtualbox para criar as máquinas virtuais. Ao todo será criado 5 máquinas virtuais, que pode ser observado na topologia abaixo.
 A topologia pode ser  visualizada na imagem abaixo: 
 ![ TrabalhoFinalDeRedes
 /Topologia.png
 ](Topologia.png)
 
-Cada VM possui um container via docker, que possui um tipo de serviço rodando, pode-se observar na tabela abaixo o tipo de seviço que as vm rodam é o nome da imagem utilizada: 
+Cada VM possuem um container via docker, que possui um tipo de serviço rodando, pode-se observar na tabela abaixo o tipo de seviço que as vm rodam é o nome da imagem utilizada.
 | Maquinas virtuais | Tipo de serviço | Nome da Imagem (DOCKER)
 | --- | --- | --- |
 | VM1 | Serviço de DHCP | homeall/dhcphelper:latest |
@@ -43,7 +43,7 @@ Cada VM possui um container via docker, que possui um tipo de serviço rodando, 
 
 **Método de construção**
 
-Para adicionar os requisitos pedidos, é necessário estruturar seu Vagrantfile. A estrutura base que será utilizado: 
+Para adicionar os requisitos pedidos, é necessário estruturar seu Vagrantfile. A estrutura base que será utilizada pode ser visto abaixo: 
 
 Vagrant.configure("2") do |config|
 
@@ -55,13 +55,23 @@ Vagrant.configure("2") do |config|
  
    vm1.vm.provision "shell", inline: <<-SHELL
 
-     export DEBIAN_FRONTEND=noninteractive
-     apt update
-     apt install -y docker.io
+   export DEBIAN_FRONTEND=noninteractive   
+   apt update
+   apt install -y docker.io
 
    SHELL
  end
-Esse código será base para todas as vms que serão criadas, serão ao todo três vms até o momento. Sendo assim, códigos que devem ser adicionado para rodar as imagens da requisição são os docker run como por exemplo docker run --name dns -d -e DNS_DOMAIN=docksal -e DNS_IP=192.168.56, que cria uma imagem DNS, que seria o requisito da VM2. Também podemos observar docker run -d --name apache2-container -e TZ=UTC -p 8080:80 ubuntu/apache2:2.4-22.04_beta, que assim cria uma imagem do apache (servidor web da VM3). Lembrando que esses comandos devem estar dentro do <<- SHELL seguindo o exemplo abaixo:
+Esse código será base para todas as vms que serão criadas. Sendo assim, códigos que devem ser adicionado para rodar as imagens da requisição são os docker run.
+
+|Serviço | Comando docker run|
+|---|---|
+| dhcp |docker run --privileged -d --name dhcp --net host -p 67:67 -e "IP=172.21.0.100" homeall/dhcphelper:latest -v /config/udhcpd.conf:/etc
+| DNS | docker run -d --name bind9-container -e TZ=UTC -p 30053:53 ubuntu/bind9:9.18-22.04_beta |
+| APACHE2 | docker run -d --name serverweb4P -v /diretorioVM1:/usr/local/apache2/htdocs/ -p 80:80 httpd |
+| FTP |docker run -d -v /ftp:/home/vsftpd -p 20:20 -p 21:21 -p 47400:47400 -e FTP_USER=ekode -e FTP_PASS=ekode123 -e PASV_ADDRESS=10.0.75.1 --name ftp --restart=always bogem/ftp|
+| NFS |  -v /nfs:/home -v /nfs:/etc/exports --cap-add SYS_ADMIN -p 1024:1024 erichough/nfs-server |
+
+Lembrando que esses comandos devem estar dentro do <<- SHELL seguindo o exemplo abaixo:
 config.vm.define "vm2" do |vm2|
 
    vm2.vm.network "forwarded_port", guest: 80, host: 8080 # 2  - Configuração de rede
