@@ -71,7 +71,7 @@ Esse código será base para todas as vms que serão criadas. Sendo assim, códi
 | FTP |docker run -d -v /ftp:/home/vsftpd -p 20:20 -p 21:21 -p 47400:47400 -e FTP_USER=ekode -e FTP_PASS=ekode123 -e PASV_ADDRESS=10.0.75.1 --name ftp --restart=always bogem/ftp|
 | NFS |  -v /nfs:/home -v /nfs:/etc/exports --cap-add SYS_ADMIN -p 1024:1024 erichough/nfs-server |
 
-Lembrando que esses comandos devem estar dentro do <<- SHELL seguindo o exemplo abaixo:
+**Lembrando que esses comandos devem estar dentro do <<- SHELL** seguindo o exemplo abaixo:
 config.vm.define "vm2" do |vm2|
 
    vm2.vm.network "forwarded_port", guest: 80, host: 8080 # 2  - Configuração de rede
@@ -86,7 +86,7 @@ config.vm.define "vm2" do |vm2|
      docker run --name dns -d -e DNS_DOMAIN=docksal -e DNS_IP=192.168.56.11 docksal/dns
    SHELL
  end
-A imagens podem ser extraídas pelo site dock hub: https://hub.docker.com/
+**A imagens podem ser extraídas pelo site dock hub: https://hub.docker.com/**
 
 **Teste**
 
