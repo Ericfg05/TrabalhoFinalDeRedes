@@ -30,6 +30,7 @@ A topologia pode ser  visualizada na imagem abaixo:
 /Topologia.png
 ](Topologia.png)
 
+Cada VM possui um container via docker, que possui um tipo de serviço rodando, pode-se observar na tabela abaixo o tipo de seviço que as vm rodam é o nome da imagem utilizada: 
 | Maquinas virtuais | Tipo de serviço | Nome da Imagem (DOCKER)
 | --- | --- | --- |
 | VM1 | Serviço de DHCP | homeall/dhcphelper:latest |
