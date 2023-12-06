@@ -30,6 +30,13 @@ A topologia pode ser  visualizada na imagem abaixo:
 /Topologia.png
 ](Topologia.png)
 
+| Maquinas virtuais | Tipo de serviço | Nome da Imagem (DOCKER)
+| --- | --- | --- |
+| VM1 | Serviço de DHCP | homeall/dhcphelper:latest |
+| VM2 | Serviço de DNS | ubuntu/bind9:9.18-22.04_beta |
+| VM3 | Serviço web APACHE 2 | httpd |
+| VM4 | Serviço FTP | bogem/ftp |
+| VM5 | Serviço NFS| erichough/nfs-server |
 
 
 
