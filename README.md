@@ -43,8 +43,7 @@ Vagrant.configure("2") do |config|
 
  config.vm.define "vm1" do |vm1|
 
-   vm1.vm.network "forwarded_port", guest: 67, host: 67 # 2  - Configuração de rede
-   vm1.vm.network "private_network", ip: "192.168.56.10"
+   vm1.vm.network "forwarded_port", guest: numero_da_porta_convidada, host: numero_da_porta_host # 2  - Configuração de rede
  
    vm1.vm.provision "shell", inline: <<-SHELL
 
@@ -57,7 +56,7 @@ Vagrant.configure("2") do |config|
 Esse código será base para todas as vms que serão criadas, serão ao todo três vms até o momento. Sendo assim, códigos que devem ser adicionado para rodar as imagens da requisição são os docker run como por exemplo docker run --name dns -d -e DNS_DOMAIN=docksal -e DNS_IP=192.168.56, que cria uma imagem DNS, que seria o requisito da VM2. Também podemos observar docker run -d --name apache2-container -e TZ=UTC -p 8080:80 ubuntu/apache2:2.4-22.04_beta, que assim cria uma imagem do apache (servidor web da VM3). Lembrando que esses comandos devem estar dentro do <<- SHELL seguindo o exemplo abaixo:
 config.vm.define "vm2" do |vm2|
 
-   vm2.vm.network "forwarded_port", guest: 53, host: 53 # 2  - Configuração de rede
+   vm2.vm.network "forwarded_port", guest: 80, host: 8080 # 2  - Configuração de rede
    vm2.vm.network "private_network", ip: "192.168.56.11"
    vm2.vm.synced_folder "/var/www/html", "/var/www/html" #3 - Pasta Compartilhada
  
@@ -73,9 +72,9 @@ A imagens podem ser extraídas pelo site dock hub: https://hub.docker.com/
 
 **Teste**
 
-Para realizar o teste do funcionamento, pode se inicializar o terminal entrar na pasta em que o Vagrantfile foi criado, e em seguida nesta pasta e digite o comando vagrant ssh nome da vm, exemplo: vagrant ssh vm2, assim você entrará dentro da vm, assim você pode dar um sudo docker ps, dessa maneira, será listados todos os conteiner criados. 
+Para realizar o teste do funcionamento, pode se inicializar o terminal, entrando na pasta em que o Vagrantfile foi criado, e em seguida nesta pasta e digite o comando vagrant ssh nome da vm, exemplo: vagrant ssh vm2, assim você entrará dentro da vm, assim você pode dar um sudo docker ps, dessa maneira, será listados todos os conteiner criados. 
 Para testar o DHCP  use o dhcp.config para poder visualizar a configuração do DHCP.
-Para acessar os containers use o comando sudo docker exec -it nome do container /bin/bash, assim pode usar o comando apache2 -v para verificar se o apache foi instalado, caso sim ele retornara sua versão.
+Para acessar os containers use o comando sudo docker exec -it nome do container /bin/bash, assim pode usar o comando apache2 -v para verificar se o apache foi instalado, caso sim ele retornara sua versão, em seguida procure a pasta em que foi compartilhado o site. Para melhor visualização segue a imagem abaixo:
 Para testar a funcionalidade do FTP, entre dentro do container, e use o comando status, assim ele retornará o status atual da conexão.
 
 
