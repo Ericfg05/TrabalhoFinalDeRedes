@@ -13,12 +13,12 @@ Para iniciar o Vagrant , você deve utilizar uma imagem de um sistema operaciona
 **Requisitos dos serviços** 
 
 |Requisitos|Descrição                                                                                                       |
-|--- ||---------------------------------------------------------------------------------------------------------------------|
-|RQ01|| Configure um servidor DHCP no ambiente Linux para atribuir endereços IP automaticamente aos dispositivos na rede.   |
-|RQ02|| Implante um servidor DNS para resolver nomes de domínio dentro da rede e configurar registros DNS como A, CNAME, MX |
-|RQ03|| Configure e hospede um servidor web Apache ou Nginx para fornecer serviços de hospedagem de sites internos          |
-|RQ04|| Implemente um servidor FTP (por exemplo, vsftpd) para permitir a transferência de arquivos na rede                  |
-|RQ05|| Configure um servidor NFS para compartilhar diretórios e arquivos entre máquinas na rede.                           |
+|---   || --------------------------------------------------------------------------------------------------------------------- |
+| RQ01 || Configure um servidor DHCP no ambiente Linux para atribuir endereços IP automaticamente aos dispositivos na rede.  |
+| RQ02 || Implante um servidor DNS para resolver nomes de domínio dentro da rede e configurar registros DNS como A, CNAME, MX |
+| RQ03 || Configure e hospede um servidor web Apache ou Nginx para fornecer serviços de hospedagem de sites internos          |
+| RQ04 || Implemente um servidor FTP (por exemplo, vsftpd) para permitir a transferência de arquivos na rede                  |
+| RQ05 || Configure um servidor NFS para compartilhar diretórios e arquivos entre máquinas na rede.                           |
 
 
 
