@@ -24,7 +24,7 @@ Para iniciar o Vagrant , você deve utilizar uma imagem de um sistema operaciona
 
 **Topologia utilizada**
 
-A topologia desse projeto consistiu em um computador (HOST)  fornecendo internet e hardware para as VMS, assim utilizando o Vagrant e o Virtualbox para criar as máquinas onde serão criadas as 3 VMS previstas onde  elas devem se comunicar entre si.
+A topologia desse projeto consistiu em um computador (HOST)  fornecendo internet e hardware para as VMS, assim utilizando o Vagrant e o Virtualbox para criar as máquinas onde serão criadas as 5 VMS previstas onde  elas devem se comunicar entre si.
 A topologia pode ser  visualizada na imagem abaixo: 
 ![ TrabalhoFinalDeRedes
 /Topologia.png
