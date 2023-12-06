@@ -1,0 +1,1 @@
+{"virtualbox":{"/config":{"guestpath":"/config","hostpath":"/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes/dhcpd","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes","disabled":false,"__vagrantfile":true}}}

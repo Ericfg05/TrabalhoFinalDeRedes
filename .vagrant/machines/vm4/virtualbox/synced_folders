@@ -1,0 +1,1 @@
+{"virtualbox":{"/ftp":{"guestpath":"/ftp","hostpath":"/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes/ftp","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/eric/Documentos/GitHub/TrabalhoFinalDeRedes","disabled":false,"__vagrantfile":true}}}
