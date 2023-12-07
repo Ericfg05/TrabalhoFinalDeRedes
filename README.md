@@ -101,6 +101,7 @@ Para realizar o teste do funcionamento, pode se inicializar o terminal, entrando
 |VM1| Para testar se o DHCP foi criado corretamente, após seguir os passa passo do item anterior, use o comando cat /etc e após use o comando cat /udhcp.conf, assim abrirá o arquivo e msotrará a configuração, pode ser visto na imagem 1 |
 |VM3|| Para testar o funcionamento do apache, entre no container conforme o passo a passo ***teste geral***, em seguida entre na pasta var/www/html e verá o arquivo HTML compartilhado.
 | VM4 | Para testar o FTP siga o passo a passo do item ***teste geral*** em seguida use o comando cd /home/vsftpd e depois cat vsftp.config  para visualizar o arquivo |
+
 ![ TrabalhoFinalDeRedes
 /Topologia.png
 ](DHCP.png)
