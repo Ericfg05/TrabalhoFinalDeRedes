@@ -103,7 +103,7 @@ Para realizar o teste do funcionamento, pode se inicializar o terminal, entrando
 | VM4 | Para testar o FTP siga o passo a passo do item ***teste geral*** em seguida use o comando cd /home/vsftpd e depois cat vsftp.config  para visualizar o arquivo |
 
 ![ TrabalhoFinalDeRedes
-/Topologia.png
+/DHCP.png
 ](DHCP.png)
 
 Para acessar os containers use o comando sudo docker exec -it nome do container /bin/bash, assim pode usar o comando apache2 -v para verificar se o apache foi instalado, caso sim ele retornara sua versão, em seguida procure a pasta em que foi compartilhado o site. Para melhor visualização segue a imagem abaixo:
