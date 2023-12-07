@@ -92,7 +92,7 @@ config.vm.define "vm2" do |vm2|
 
 ***Teste geral***
 
-Nesse item, descreve a forma geral padrão de teste de cada vm.
+Nesse item, descreve a forma geral, padrão de teste de cada vm.
 
 Para realizar o teste do funcionamento, pode se inicializar o terminal, entrando na pasta em que o Vagrantfile foi criado, e em seguida nesta pasta e digite o comando vagrant ssh nome da vm, exemplo: vagrant ssh vm2, assim você entrará dentro da vm, posteriormente você pode usar o comando sudo docker ps, dessa maneira, será listados todos os conteiner criados. E para finalizar use o comando sudo docker exec -it id_container, assim entrando dentro do container. obs: a VM1 troque o /bin/bash por /bin/sh para entrar no container
 
