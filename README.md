@@ -99,12 +99,30 @@ Para realizar o teste do funcionamento, pode se inicializar o terminal, entrando
 |VMS|Testes
 | --- | --- |
 |VM1| Para testar se o DHCP foi criado corretamente, após seguir os passa passo do item anterior, use o comando cat /etc e após use o comando cat /udhcp.conf, assim abrirá o arquivo e msotrará a configuração, pode ser visto na imagem 1 |
-|VM3|| Para testar o funcionamento do apache, entre no container conforme o passo a passo ***teste geral***, em seguida entre na pasta var/www/html e verá o arquivo HTML compartilhado.
-| VM4 | Para testar o FTP siga o passo a passo do item ***teste geral*** em seguida use o comando cd /home/vsftpd e depois cat vsftp.config  para visualizar o arquivo |
+|VM2| Para testar o funcionamento do DNS, utilieze o passo a passo do item ***testes geral*** me seguinda, use o comando cd /etc e use o cat /resolv.conf assim aparecerá o arquivo de configuração, pode-se visualizar na imagem 2
+|VM3|| Para testar o funcionamento do apache, entre no container conforme o passo a passo ***teste geral***, em seguida entre na pasta usr/local/apache2/htdocs e verá o arquivo HTML compartilhado. pode-se observar na imagem 3
+| VM4 | Para testar o FTP siga o passo a passo do item ***teste geral*** em seguida use o comando cd /home/vsftpd e depois cat vsftp.config  para visualizar o arquivo. pode-se observar na imagem 4 |
 
+**Imagem 1**
 ![ TrabalhoFinalDeRedes
 /DHCP.png
 ](DHCP.png)
 
-Para acessar os containers use o comando sudo docker exec -it nome do container /bin/bash, assim pode usar o comando apache2 -v para verificar se o apache foi instalado, caso sim ele retornara sua versão, em seguida procure a pasta em que foi compartilhado o site. Para melhor visualização segue a imagem abaixo:
+**Imagem 2**
+![ TrabalhoFinalDeRedes
+/DNS.png
+](DNS.png)
+
+**Imagem 3**
+![ TrabalhoFinalDeRedes
+/APACHE.png
+](APACHE.png)
+
+**Imagem 4**
+![ TrabalhoFinalDeRedes
+/FTPS.png
+](FTPS.png)
+
+
+
 
